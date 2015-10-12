@@ -31,5 +31,9 @@ module Shine
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Use SQL rather than Ruby for storing the schema, as Ruby doesn't understand check_constraints
+    # in PostgreSQL and so test db's will not be accurate when created
+    config.active_record.schema_format = :sql 
   end
 end

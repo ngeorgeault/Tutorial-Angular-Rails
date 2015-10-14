@@ -16,5 +16,10 @@ PAGE_SIZE = 10
     else
       @customers = []
     end
+
+    respond_to do |format|
+      format.html {}
+      format.json {render json: @customers }
+    end
   end
 end

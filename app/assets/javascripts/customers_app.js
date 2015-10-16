@@ -1,8 +1,9 @@
 var app = angular.module( 'customers',[ ] );
 
-app.controller( "CustomerSearchController", [
-           '$scope', '$http',
-  function( $scope,   $http ) {
+app.controller( "CustomerSearchController", 
+                    [ '$scope', '$http', 
+                          function( $scope,   $http ) {
+
     $scope.customers = [ ];
     var page = 0;
 
@@ -12,17 +13,19 @@ app.controller( "CustomerSearchController", [
         return;
       }
 
-      $http.get (
-                "/customers.json", {"params": { "keywords": searchTerm, "page": page } } 
-                ).success (
-                    function(data,status,headers,config) {
-                      $scope.customers = data;
-                    }
-                ).error(
-                function(data,status,headers,config) {
-                  alert("There was a problem: " + status);
-                  }
-                );
+      $http ({
+                  method: 'GET',
+                  url: './customers.json',
+                  params: { "keywords": searchTerm, "page": page }
+                }).
+                then(function successCallback(response) {
+                    $scope.customers = response.data;
+                    $scope.status = response.status;
+                }, 
+                function errorCallback(response) {
+                  $scope.status = response.status;
+                  $scope.customers = response.data;
+                });
     }
 
     $scope.previousPage = function() {

@@ -33,6 +33,9 @@ gem 'faker', '1.4.3'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  # Use RSpec instead of Test::Unit as the syntax is familiar with Jasmine for JS testing
+  # and this will mean a shallower learning curve for both
+  gem 'rspec-rails'
 end
 
 group :development do

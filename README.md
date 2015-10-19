@@ -12,8 +12,6 @@ Ruby          2.2
 
 Rails         4.2.4
 
-Teaspoon      2
-
 Devise        3.5
 
 ### Data Store

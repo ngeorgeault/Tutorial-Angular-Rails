@@ -36,6 +36,12 @@ group :development, :test do
   # Use RSpec instead of Test::Unit as the syntax is familiar with Jasmine for JS testing
   # and this will mean a shallower learning curve for both
   gem 'rspec-rails'
+  # Using poltergeist will bridge the gap between capybara and phantomjs for acceptance
+  # testing
+  gem 'poltergeist'
+  # db cleaner gives us flexibility to use permanent test fixtures for 
+  # acceptance-testing or transactional ones on a blank database for rspec.
+  gem 'database_cleaner'
 end
 
 group :development do

@@ -20,5 +20,11 @@ Devise        3.5
 PostgreSQL    9.4
 
 ### Testing
+#Unit
 RSpec (latest)
+
+Teaspoon, Jasmin (latest)
+
+#Acceptance
+Capybara, Poltergeist, PhantomJS (latest)
 

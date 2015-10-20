@@ -1,4 +1,6 @@
-var app = angular.module( 'customers',[ ] );
+var app = angular.module( 'customers',[
+                                      'ngRoute',
+                                        ] );
 
 app.controller( "CustomerSearchController", 
                     [ '$scope', '$http', 
@@ -12,23 +14,10 @@ app.controller( "CustomerSearchController",
       if (searchTerm.length < 3) {
         return;
       }
-
-      $http.get (
-                "/customers.json", {"params": { "keywords": searchTerm, "page": page } } 
-                ).success (
-                    function(data,status,headers,config) {
-                      $scope.customers = data;
-                    }
-                ).error(
-                function(data,status,headers,config) {
-                  alert("There was a problem: " + status);
-                  }
-                );
-
-
+      
       $http ({
                   method: 'GET',
-                  url: './customers.json',
+                  url: '/customers.json',
                   params: { "keywords": searchTerm, "page": page }
                 }).
                 then(function successCallback(response) {

@@ -12,6 +12,7 @@ app.controller( "CustomerSearchController", [
         return;
       }
 
+
       $http.get (
                 "/customers.json", {"params": { "keywords": searchTerm, "page": page } } 
                 ).success (
@@ -23,6 +24,21 @@ app.controller( "CustomerSearchController", [
                   alert("There was a problem: " + status);
                   }
                 );
+
+      $http ({
+                  method: 'GET',
+                  url: './customers.json',
+                  params: { "keywords": searchTerm, "page": page }
+                }).
+                then(function successCallback(response) {
+                    $scope.customers = response.data;
+                    $scope.status = response.status;
+                }, 
+                function errorCallback(response) {
+                  $scope.status = response.status;
+                  alert("There was a problem: " + response.status)
+                });
+
     }
 
     $scope.previousPage = function() {

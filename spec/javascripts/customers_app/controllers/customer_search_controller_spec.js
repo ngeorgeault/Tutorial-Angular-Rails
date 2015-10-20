@@ -66,7 +66,7 @@ describe ("CustomerSearchController", function() {
     }));
 
     beforeEach(function() {
-      httpBackend.when('GET', './customers.json?keywords=bob&page=0').
+      httpBackend.when('GET', '/customers.json?keywords=bob&page=0').
                   respond(serverResults);
     });
 
@@ -100,7 +100,7 @@ describe ("CustomerSearchController", function() {
     }));
 
     beforeEach(function() {
-      httpBackend.when('GET', './customers.json?keywords=bob&page=0').
+      httpBackend.when('GET', '/customers.json?keywords=bob&page=0').
                   respond(500, 'Internal Server Error');
       spyOn(window, "alert");
     });

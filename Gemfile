@@ -30,6 +30,11 @@ gem 'bower-rails'
 # Use Faker to populate customer database 
 gem 'faker', '1.4.3'
 
+# Use angular-rails-templates to enable angular html assets to be served via the
+# asset pipeline. Use sprockets 2.x because 3.x breaks the aforementioned gem
+gem 'angular-rails-templates'
+gem 'sprockets', "~> 2.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

@@ -22,4 +22,10 @@ PAGE_SIZE = 10
       format.json {render json: @customers }
     end
   end
+
+  def show
+    
+  end
+
 end
+

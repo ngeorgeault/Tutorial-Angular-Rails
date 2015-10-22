@@ -77,8 +77,8 @@ def create_billing_address(customer_id, num_states)
                        zipcode: Faker::Address.zip 
                      )
   CustomersBillingAddress.create!(
-              customer: customer_id,
-              address: billing_address
+              customer_id: customer_id,
+              address_id: billing_address
   )
 end
 
@@ -91,8 +91,8 @@ def create_shipping_address(customer_id, num_states, is_primary)
                        zipcode: Faker::Address.zip 
                        )
     CustomerShippingAddress.create!(
-      customer: customer_id,
-       address: shipping_address,
+      customer_id: customer_id,
+       address_id: shipping_address,
        primary: is_primary)
 end
 

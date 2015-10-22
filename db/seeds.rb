@@ -69,7 +69,7 @@ State.create!(name: "Wisconsin"         , code: "WI")
 State.create!(name: "Wyoming"           , code: "WY")
 
 def create_billing_address(customer_id, num_states)
-  billing_state = State.all([rand(num_states)])
+  billing_state = State.all[rand(num_states)]
   billing_address = Address.create!(
                         street: Faker::Address.street_address,
                           city: Faker::Address.city,
@@ -83,7 +83,7 @@ def create_billing_address(customer_id, num_states)
 end
 
 def create_shipping_address(customer_id, num_states, is_primary)
-    shipping_state = State.all([rand(num_states)])
+    shipping_state = State.all[rand(num_states)]
     shipping_address = Address.create!(
                         street: Faker::Address.street_address,
                           city: Faker::Address.city,
@@ -96,7 +96,7 @@ def create_shipping_address(customer_id, num_states, is_primary)
        primary: is_primary)
 end
 
-num_states = States.all.count 
+num_states = State.all.count 
 Customer.all.pluck(:id).each do |customer_id|
   create_billing_address(customer_id, num_states)
   num_shipping_addresses = rand(4) + 1

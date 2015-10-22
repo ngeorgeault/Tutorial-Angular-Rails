@@ -75,4 +75,19 @@ app.controller("CustomerDetailController", [
                 '$scope', '$http', '$routeParams',
         function($scope,   $http,   $routeParams) {
 
-        }]);
+          customerID = $routeParams.id;
+          $scope.customer = {};
+
+        $http ({
+                  method: 'GET',
+                  url: '/customers/' + customerID + '.json'
+                }).
+                then(function successCallback(response) {
+                    $scope.customer = response.data;
+                }, 
+                function errorCallback(response) {
+                  alert("There was a problem: " + response.status);
+                });
+
+
+}]);

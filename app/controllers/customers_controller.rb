@@ -24,7 +24,14 @@ PAGE_SIZE = 10
   end
 
   def show
-    
+    if params[:id].present?
+      @customer = Customer.find_by(id: params[:id])
+      respond_to do |format|
+          format.html {}
+          format.json {render json: @customer}
+      end
+    end
+
   end
 
 end

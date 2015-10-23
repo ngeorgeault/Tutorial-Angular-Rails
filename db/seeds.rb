@@ -78,7 +78,7 @@ def create_billing_address(customer_id, num_states)
                      )
   CustomersBillingAddress.create!(
               customer_id: customer_id,
-              address_id: billing_address
+              address_id: billing_address.id
   )
 end
 
@@ -87,12 +87,12 @@ def create_shipping_address(customer_id, num_states, is_primary)
     shipping_address = Address.create!(
                         street: Faker::Address.street_address,
                           city: Faker::Address.city,
-                         state: billing_state,
+                         state: shipping_state,
                        zipcode: Faker::Address.zip 
                        )
-    CustomerShippingAddress.create!(
+    CustomersShippingAddress.create!(
       customer_id: customer_id,
-       address_id: shipping_address,
+       address_id: shipping_address.id,
        primary: is_primary)
 end
 
@@ -100,7 +100,7 @@ num_states = State.all.count
 Customer.all.pluck(:id).each do |customer_id|
   create_billing_address(customer_id, num_states)
   num_shipping_addresses = rand(4) + 1
-  num_shipping_addresses.times do
+  num_shipping_addresses.times do |i|
     create_shipping_address(customer_id, num_states, i == 0)
   end
 end

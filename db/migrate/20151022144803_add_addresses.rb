@@ -26,5 +26,3 @@ class AddAddresses < ActiveRecord::Migration
 
   end
 end
-
-# 160

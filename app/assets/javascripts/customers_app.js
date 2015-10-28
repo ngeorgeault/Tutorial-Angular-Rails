@@ -2,6 +2,7 @@
 var app = angular.module( 'customers',[
                                       'ngRoute',
                                       'ngResource',
+                                      'ngMessages',
                                       'templates',
                                         ]
 );
@@ -79,7 +80,15 @@ app.controller("CustomerDetailController", [
           $scope.customerID = $routeParams.id;
           var Customer = $resource('/customers/:customerID.json');
           $scope.customer = Customer.get({"customerID": $scope.customerID});
+
+            $scope.save = function(){
+              if($scope.form.$valid){
+                alert("Save!")
+              }
+            }
         }
+
+        
 ]);
 
 app.controller("CustomerCreditCardController", [

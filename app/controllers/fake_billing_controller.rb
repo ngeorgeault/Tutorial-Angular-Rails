@@ -2,7 +2,7 @@ class FakeBillingController < ApplicationController
 
   def show
 
-    if params[:customerID].present?
+    if params[:cardholder_id].present?
       sleep 2
       render json: {
                lastFour: Faker::Business.credit_card_number[-4..-1],

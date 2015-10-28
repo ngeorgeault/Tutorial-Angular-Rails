@@ -34,21 +34,21 @@ feature "Customer Search" do
 
 
   # Create our test customers before each test
-  create_customer first_name: "Robert",
-                  last_name:  "Aaron"
+  create_customer ({first_name: "Robert",
+                      last_name:  "Aaron"})
   
-  create_customer first_name: "Bob",
-                  last_name:  "Johnson"
+  create_customer ({first_name: "Bob",
+                      last_name:  "Johnson"})
   
-  create_customer first_name: "JR",
-                  last_name:  "Bob"
+  create_customer ({first_name: "JR",
+                      last_name:  "Bob"})
   
-  create_customer first_name: "Bobby",
-                  last_name:  "Dobbs"
+  create_customer ({first_name: "Bobby",
+                      last_name:  "Dobbs"})
   
-  create_customer first_name: "Bob",
-                  last_name:  "Jones",
-                  email:      "bob123@somewhere.net"
+  create_customer ({first_name: "Bob",
+                      last_name:  "Jones",
+                      email:      "bob123@somewhere.net"})
 
   visit "/customers"
   fill_in "Email",      with: "bob@example.com"

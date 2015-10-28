@@ -1,6 +1,7 @@
 
 var app = angular.module( 'customers',[
                                       'ngRoute',
+                                      'ngResource',
                                       'templates',
                                         ]
 );
@@ -72,22 +73,20 @@ app.controller("CustomerSearchController",
 
 
 app.controller("CustomerDetailController", [
-                '$scope', '$http', '$routeParams',
-        function($scope,   $http,   $routeParams) {
+                '$scope', '$resource', '$routeParams',
+        function($scope,   $resource,   $routeParams) {
 
           customerID = $routeParams.id;
-          $scope.customer = {};
+          var Customer = $resource('/customers/:customerID.json');
+          $scope.customer = Customer.get({"customerID": customerID});
+        }
+]);
 
-        $http ({
-                  method: 'GET',
-                  url: '/customers/' + customerID + '.json'
-                }).
-                then(function successCallback(response) {
-                    $scope.customer = response.data;
-                }, 
-                function errorCallback(response) {
-                  alert("There was a problem: " + response.status);
-                });
-
-
-}]);
+app.controller("CustomerCreditCardController", [
+                  '$scope', '$resource', '$routeParams',
+          function($scope,   $resource,   $routeParams) {
+            customerID = $routeParams.id;
+            var CreditCardInfo = $resource('/fake_billing.json');
+            $scope.creditCard = CreditCardInfo.get({"customerID": customerID})
+          }
+]);

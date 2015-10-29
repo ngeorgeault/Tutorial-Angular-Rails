@@ -119,11 +119,11 @@
               }">
                 <label class="sr-only" for="shippingZip">Zip</label>
                 <input type="text" class="form-control" 
-                       required pattern="\d\d\d\d\d"
+                       required pattern="(\d\d\d\d\d)|(\d\d\d\d\d-\d\d\d\d)"
                        name="shippingZip" ng-model="customer.shipping_zipcode"> 
                 <p class="help-block" ng-messages="form.shippingZip.$error">
                   <span ng-message="required">Zip is required</span>
-                  <span ng-message="pattern">Zip must be five digits</span>
+                  <span ng-message="pattern">Zip must be five digits or nine in this format: 12345-6789</span>
                 </p>
               </div>
             </div>
@@ -236,11 +236,12 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="sr-only" for="zip">Zip</label>
-                  <input type="text" class="form-control" required pattern="\d\d\d\d\d"
+                  <input type="text" class="form-control" 
+                         required pattern="(\d\d\d\d\d)|(\d\d\d\d\d-\d\d\d\d"
                          name="billingZip" ng-model="customer.billing_zipcode"> 
                   <p class="help-block" ng-messages="form.billingZip.$error">
                     <span ng-message="required">Zip is required</span>
-                    <span ng-message="pattern">Zip must be five digits</span>
+                    <span ng-message="pattern">Zip must be five digits or nine in this format: 12345-6789</span>
                   </p>
                 </div>
               </div>

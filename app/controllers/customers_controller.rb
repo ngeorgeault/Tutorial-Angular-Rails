@@ -25,13 +25,18 @@ PAGE_SIZE = 10
 
   def show
     if params[:id].present?
-      @customer = CustomerDetail.find_by(customer_id: params[:id])
+      @customer_detail = CustomerDetail.find_by(customer_id: params[:id])
       respond_to do |format|
           format.html {}
-          format.json {render json: @customer}
+          format.json {render json: @customer_detail}
       end
     end
+  end
 
+  def update
+    customer_detail = CustomerDetail.find(params[:id])
+    customer_detail.update(params)
+    head :ok
   end
 
 end

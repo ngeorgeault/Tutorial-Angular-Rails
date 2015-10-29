@@ -7,4 +7,11 @@ class ApplicationController < ActionController::Base
   # facing web app
   before_action :authenticate_user!
 
+  # disable CSRF protection for AJAX requests
+  skip_before_action :verify_authenticity_token, if: :json_request?
+
+  def json_request?
+    request.format.json?
+  end
+  
 end

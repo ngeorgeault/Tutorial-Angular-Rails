@@ -3,6 +3,9 @@
   <h2>We're using Rails version <%= Rails.version %></h2>
 </header>
 <section>
-  <p>Future home of Shine's dashboard</p>
-  <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+  <%= link_to "Enter the customers dashboard", customers_path, method: :get, class: "btn btn-primary btn-lg" %>
 </section>
+<section>
+ <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+</section>
+

@@ -35,6 +35,9 @@ gem 'faker', '1.4.3'
 gem 'angular-rails-templates'
 gem 'sprockets', "~> 2.0"
 
+# In order to run db:seed on Heroku without it timing out, use a background dyno by queing it up with delayed task
+gem 'delayed_task'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
